@@ -41,6 +41,7 @@ public class AttributeTooltipRenderer {
                     int color = textColor != null ? textColor.getValue() : -1;
                     component = new AttributeTooltipComponent(display, textTooltip.text, color);
                 }
+                //
             }
             mutable.set(i, component);
         }
