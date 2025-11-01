@@ -1,0 +1,22 @@
+package team.lodestar.wayward_attributes.mixin;
+
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.Item;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
+import team.lodestar.wayward_attributes.tweaks.RangedAttributeTweaks;
+
+@Mixin(CrossbowItem.class)
+public class CrossbowItemMixin {
+
+    @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;<init>(Lnet/minecraft/world/item/Item$Properties;)V"))
+    private static Item.Properties enchmod$addCrossbowAttributes(Item.Properties properties) {
+        return RangedAttributeTweaks.addCrossbowProperties(properties);
+    }
+
+    @ModifyArg(method = "getChargeDuration", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;modifyCrossbowChargingTime(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;F)F"), index = 2)
+    private static float enchmod$normalizeCrossbowChargingTime(float crossbowChargingTime) {
+        return 1.0f;
+    }
+}
