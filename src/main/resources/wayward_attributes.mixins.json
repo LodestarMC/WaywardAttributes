@@ -11,7 +11,8 @@
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
     "ServerPlayerMixin",
-    "SwordItemMixin"
+    "SwordItemMixin",
+    "client.ClientHooksMixin"
   ],
   "client": [
   ]

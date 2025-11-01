@@ -1,0 +1,26 @@
+[
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/sword"
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/axe",
+    "tags": ["c:tools/axe", "axes"]
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/mace",
+    "tags": ["c:tools/mace"]
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/trident",
+    "tags": ["enchantable/trident", "c:tools/trident"]
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/scythe",
+    "tags": ["malum:scythe", "c:tools/scythe"]
+  }
+]

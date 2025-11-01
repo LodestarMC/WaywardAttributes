@@ -15,12 +15,12 @@ public class ProjectileWeaponItemMixin {
 
     @ModifyArg(method = "shoot",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;shootProjectile(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/projectile/Projectile;IFFFLnet/minecraft/world/entity/LivingEntity;)V"), index = 3)
-    private float enchmod$modifyVelocity(float velocity, @Local(name = "shooter") LivingEntity shooter, @Local(name = "weapon") ItemStack weapon, @Local(name = "projectileItems") List<ItemStack> projectileItems) {
+    private float waywardAttributes$modifyVelocity(float velocity, @Local(name = "shooter") LivingEntity shooter, @Local(name = "weapon") ItemStack weapon, @Local(name = "projectileItems") List<ItemStack> projectileItems) {
         return RangedAttributeTweaks.modifyVelocity(velocity, shooter, weapon, projectileItems);
     }
 
     @ModifyArg(method = "shoot", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;shootProjectile(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/projectile/Projectile;IFFFLnet/minecraft/world/entity/LivingEntity;)V"), index = 1)
-    private Projectile enchmod$modifyDamage(Projectile projectile, @Local(name = "shooter") LivingEntity shooter) {
+    private Projectile waywardAttributes$modifyDamage(Projectile projectile, @Local(name = "shooter") LivingEntity shooter) {
         RangedAttributeTweaks.modifyDamage(shooter, projectile);
         return projectile;
     }

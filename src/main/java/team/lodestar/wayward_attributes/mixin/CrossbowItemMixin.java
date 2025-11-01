@@ -11,12 +11,12 @@ import team.lodestar.wayward_attributes.tweaks.RangedAttributeTweaks;
 public class CrossbowItemMixin {
 
     @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;<init>(Lnet/minecraft/world/item/Item$Properties;)V"))
-    private static Item.Properties enchmod$addCrossbowAttributes(Item.Properties properties) {
+    private static Item.Properties waywardAttributes$addCrossbowAttributes(Item.Properties properties) {
         return RangedAttributeTweaks.addCrossbowProperties(properties);
     }
 
     @ModifyArg(method = "getChargeDuration", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;modifyCrossbowChargingTime(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;F)F"), index = 2)
-    private static float enchmod$normalizeCrossbowChargingTime(float crossbowChargingTime) {
+    private static float waywardAttributes$normalizeCrossbowChargingTime(float crossbowChargingTime) {
         return 1.0f;
     }
 }

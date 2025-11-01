@@ -11,7 +11,7 @@ import team.lodestar.wayward_attributes.tweaks.RangedAttributeTweaks;
 public class BowItemMixin {
 
     @ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;<init>(Lnet/minecraft/world/item/Item$Properties;)V"))
-    private static Item.Properties enchmod$addBowAttributes(Item.Properties properties) {
+    private static Item.Properties waywardAttributes$addBowAttributes(Item.Properties properties) {
         return RangedAttributeTweaks.addBowProperties(properties);
     }
 }

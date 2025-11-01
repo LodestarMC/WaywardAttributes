@@ -18,7 +18,7 @@ public abstract class LivingEntityMixin {
                     to = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;completeUsingItem()V")),
             at = @At(value = "FIELD", target = "Lnet/minecraft/world/entity/LivingEntity;useItemRemaining:I", opcode = Opcodes.GETFIELD, shift = At.Shift.BEFORE),
             cancellable = true)
-    private void enchmod$applyDrawSpeed(CallbackInfo ci, @Local(argsOnly = true) ItemStack stack) {
+    private void waywardAttributes$applyDrawSpeed(CallbackInfo ci, @Local(argsOnly = true) ItemStack stack) {
         LivingEntity entity = (LivingEntity) (Object) this;
         if (RangedAttributeTweaks.modifyDrawSpeed(entity, stack)) {
             ci.cancel();
