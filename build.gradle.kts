@@ -98,10 +98,6 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven {
-        name = "Curios maven"
-        url = uri("https://maven.theillusivec4.top/")
-    }
-    maven {
         name = "JEI maven"
         url = uri("https://dvs1.progwml6.com/files/maven")
     }
