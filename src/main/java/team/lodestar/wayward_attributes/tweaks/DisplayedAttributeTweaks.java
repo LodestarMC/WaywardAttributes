@@ -22,7 +22,7 @@ import net.neoforged.neoforge.common.extensions.IAttributeExtension;
 import team.lodestar.lodestone.registry.common.tag.*;
 import team.lodestar.lodestone.systems.enchanting.*;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.registry.ModAttributeTypes;
+import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -60,8 +60,8 @@ public class DisplayedAttributeTweaks {
         modifyBaseAttribute(map, stack, Attributes.ATTACK_DAMAGE, EnchantmentEffectComponents.DAMAGE);
         modifyAttributes(map, Attributes.SWEEPING_DAMAGE_RATIO, Attributes.ATTACK_DAMAGE);
 
-        modifyBaseAttribute(map, stack, ModAttributeTypes.ARROW_DAMAGE, EnchantmentEffectComponents.DAMAGE);
-        modifyAttributes(map, ModAttributeTypes.ARROW_DAMAGE, ModAttributeTypes.ARROW_VELOCITY);
+        modifyBaseAttribute(map, stack, WaywardAttributeTypes.ARROW_DAMAGE, EnchantmentEffectComponents.DAMAGE);
+        modifyAttributes(map, WaywardAttributeTypes.ARROW_DAMAGE, WaywardAttributeTypes.ARROW_VELOCITY);
 
         return map;
     }

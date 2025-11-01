@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.AABB;
-import team.lodestar.wayward_attributes.registry.ModAttributeTypes;
+import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
 import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
 
 public class SweepAttackTweaks {
@@ -17,7 +17,7 @@ public class SweepAttackTweaks {
     public static final ResourceLocation BASE_SWEEP_RADIUS = ResourceLocation.withDefaultNamespace("base_sweeping_damage_radius");
 
     public static AABB modifySweepingArea(Player player, AABB aabb) {
-        float radius = (float) player.getAttributeValue(ModAttributeTypes.SWEEPING_DAMAGE_RADIUS);
+        float radius = (float) player.getAttributeValue(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS);
         float vertical = 0.25f * radius;
         var center = aabb.getCenter();
         var min = aabb.getMinPosition();
@@ -37,7 +37,7 @@ public class SweepAttackTweaks {
         return LodestoneItemProperties.mergeAttributes(properties,
                 ItemAttributeModifiers.builder()
                         .add(Attributes.SWEEPING_DAMAGE_RATIO, new AttributeModifier(BASE_SWEEP_DAMAGE, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                        .add(ModAttributeTypes.SWEEPING_DAMAGE_RADIUS, new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                        .add(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS, new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                         .build());
     }
 }

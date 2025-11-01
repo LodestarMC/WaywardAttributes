@@ -17,8 +17,8 @@ public class WaywardAttributes
     public WaywardAttributes(IEventBus modEventBus) {
         NeoForgeMod.enableMergedAttributeTooltips();
 
-        ModAttributeTypes.ATTRIBUTES.register(modEventBus);
-        ModAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
+        WaywardAttributeTypes.ATTRIBUTES.register(modEventBus);
+        WaywardAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
     }
 
     public static ResourceLocation path(String path) {

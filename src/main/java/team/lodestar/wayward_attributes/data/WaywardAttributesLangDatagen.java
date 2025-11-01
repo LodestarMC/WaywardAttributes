@@ -17,7 +17,7 @@ public class WaywardAttributesLangDatagen extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        var attributes = new HashSet<>(ModAttributeTypes.ATTRIBUTES.getEntries());
+        var attributes = new HashSet<>(WaywardAttributeTypes.ATTRIBUTES.getEntries());
 
         attributes.forEach(a -> {
             String name = DataHelper.toTitleCase(a.getId().getPath(), "_");

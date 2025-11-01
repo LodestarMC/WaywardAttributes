@@ -14,7 +14,7 @@ import team.lodestar.lodestone.systems.attribute.*;
 import static team.lodestar.lodestone.registry.common.LodestoneAttributes.*;
 
 @EventBusSubscriber()
-public class ModAttributeTypes {
+public class WaywardAttributeTypes {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, WaywardAttributes.MODID);
 
     public static final DeferredHolder<Attribute, Attribute> JUMPING_EXHAUSTION = registerAttribute(ATTRIBUTES,
