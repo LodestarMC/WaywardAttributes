@@ -12,16 +12,21 @@ import net.neoforged.neoforge.client.*;
 import net.neoforged.neoforge.client.event.*;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.*;
 import team.lodestar.wayward_attributes.client.*;
 
 import java.util.*;
+import java.util.stream.*;
 
 @Mixin(ClientHooks.class)
 public class ClientHooksMixin {
 
-    @WrapOperation(method = "gatherTooltipComponentsFromElements", at = @At(value = "RETURN"), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/client/event/RenderTooltipEvent$GatherComponents;getMaxWidth()I")))
-    private static void waywardAttributes$addEnchantmentTooltip(ItemStack stack, List<Either<FormattedText, TooltipComponent>> elements, int mouseX, int screenWidth, int screenHeight, Font fallbackFont, CallbackInfoReturnable<List<ClientTooltipComponent>> cir, @Local(name = "font") Font font, @Local RenderTooltipEvent.GatherComponents event) {
-        cir.setReturnValue(AttributeTooltipRenderer.addToTooltip(stack, elements, cir.getReturnValue(), mouseX, screenWidth, font, event));
+    @WrapOperation(method = "gatherTooltipComponentsFromElements", at = @At(value = "INVOKE", target = "Ljava/util/stream/Stream;toList()Ljava/util/List;"))
+    private static List<ClientTooltipComponent> waywardAttributes$addEnchantmentTooltip(Stream<?> instance, Operation<List<ClientTooltipComponent>> original,
+                                                                                        @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) List<Either<FormattedText, TooltipComponent>> elements,
+                                                                                        @Local(name = "mouseX") int mouseX, @Local(name = "screenWidth") int screenWidth,
+                                                                                        @Local(name = "font") Font font, @Local RenderTooltipEvent.GatherComponents event) {
+        final List<ClientTooltipComponent> result = original.call(instance);
+
+        return AttributeTooltipRenderer.addToTooltip(stack, elements, result, mouseX, screenWidth, font, event);
     }
 }
