@@ -19,11 +19,13 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
 
     protected final AttributeDisplay display;
     protected final FormattedCharSequence text;
+    protected final int textOffset;
     protected final int color;
 
-    public AttributeTooltipComponent(AttributeDisplay display, FormattedCharSequence text, int color) {
+    public AttributeTooltipComponent(AttributeDisplay display, FormattedCharSequence text, int textOffset, int color) {
         this.display = display;
         this.text = text;
+        this.textOffset = textOffset;
         this.color = color;
     }
     
@@ -50,6 +52,6 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
 
     @Override
     public void renderText(Font font, int x, int y, Matrix4f matrix, MultiBufferSource.BufferSource bufferSource) {
-        font.drawInBatch(this.text, x + ICON_SIZE + ICON_PADDING, y, -1, true, matrix, bufferSource, Font.DisplayMode.NORMAL, 0, 15728880);
+        font.drawInBatch(this.text, x + ICON_SIZE + ICON_PADDING + textOffset, y, -1, true, matrix, bufferSource, Font.DisplayMode.NORMAL, 0, 15728880);
     }
 }

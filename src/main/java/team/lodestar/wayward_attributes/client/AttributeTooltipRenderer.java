@@ -45,7 +45,12 @@ public class AttributeTooltipRenderer {
                     if (color == 5592405) { // default gray color
                         continue;
                     }
-                    component = new AttributeTooltipComponent(display, textTooltip.text, color);
+                    int offset = 0;
+                    var string = text.getString();
+                    if (string.startsWith("+") || string.startsWith("-")) {
+                        offset = 2;
+                    }
+                    component = new AttributeTooltipComponent(display, textTooltip.text, offset, color);
                 }
                 mutable.set(j, component);
             }
