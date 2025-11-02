@@ -41,13 +41,12 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
 
     @Override
     public void renderImage(Font font, int x, int y, GuiGraphics guiGraphics) {
-        VFXBuilders.createScreen()
+        var builder = VFXBuilders.createScreen()
                 .setShader(GameRenderer::getPositionTexColorShader)
-                .setPositionWithWidth(x + 4, y, ICON_SIZE, ICON_SIZE)
-                .setSprite(display.texture())
-                .setColor(color)
-                .setAlpha(1f)
-                .blit(guiGraphics);
+                .setSprite(display.texture());
+
+        builder.setPositionWithWidth(x + 5, y + 1, ICON_SIZE, ICON_SIZE).setColor(color).multiplyColor(0.25f).setAlpha(1f).blit(guiGraphics);
+        builder.setPositionWithWidth(x + 4, y, ICON_SIZE, ICON_SIZE).setColor(color).setAlpha(1f).blit(guiGraphics);
     }
 
     @Override
