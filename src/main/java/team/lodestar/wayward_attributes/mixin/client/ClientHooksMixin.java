@@ -21,11 +21,8 @@ import java.util.stream.*;
 public class ClientHooksMixin {
 
     @WrapOperation(method = "gatherTooltipComponentsFromElements", at = @At(value = "INVOKE", target = "Ljava/util/stream/Stream;toList()Ljava/util/List;"))
-    private static List<ClientTooltipComponent> waywardAttributes$addEnchantmentTooltip(Stream<?> instance, Operation<List<ClientTooltipComponent>> original,
-                                                                                        @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) List<Either<FormattedText, TooltipComponent>> elements,
-                                                                                        @Local(name = "mouseX") int mouseX, @Local(name = "screenWidth") int screenWidth,
-                                                                                        @Local(name = "font") Font font, @Local RenderTooltipEvent.GatherComponents event) {
+    private static List<ClientTooltipComponent> waywardAttributes$addEnchantmentTooltip(Stream<?> instance, Operation<List<ClientTooltipComponent>> original, @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) List<Either<FormattedText, TooltipComponent>> elements) {
         var result = original.call(instance);
-        return AttributeTooltipRenderer.addToTooltip(stack, elements, result, mouseX, screenWidth, font, event);
+        return AttributeTooltipRenderer.addToTooltip(stack, elements, result);
     }
 }

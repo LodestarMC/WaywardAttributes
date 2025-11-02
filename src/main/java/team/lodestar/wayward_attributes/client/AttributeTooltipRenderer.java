@@ -21,30 +21,34 @@ import java.util.*;
 public class AttributeTooltipRenderer {
 
     @ApiStatus.Internal
-    public static List<ClientTooltipComponent> addToTooltip(ItemStack stack, List<Either<FormattedText, TooltipComponent>> elements, List<ClientTooltipComponent> components, int mouseX, int screenWidth, Font font, RenderTooltipEvent.GatherComponents event) {
-        if (elements.size() != components.size()) {
-            return components;
-        }
+    public static List<ClientTooltipComponent> addToTooltip(ItemStack stack, List<Either<FormattedText, TooltipComponent>> elements, List<ClientTooltipComponent> components) {
         var mutable = new ArrayList<>(components);
-        for (int i = 0; i < elements.size(); i++) {
-            var element = elements.get(i);
-            var component = components.get(i);
-            if (!(component instanceof ClientTextTooltip textTooltip)) {
-                continue;
-            }
+        for (Either<FormattedText, TooltipComponent> element : elements) {
+            for (int j = 0; j < components.size(); j++) {
+                var component = components.get(j);
+                if (!(component instanceof ClientTextTooltip textTooltip)) {
+                    continue;
+                }
 
-            var left = element.left();
-            if (left.isPresent() && left.get() instanceof Component text) {
-                var display = findAttributeDisplay(stack, text);
-                if (display != null) {
+                var left = element.left();
+                if (left.isPresent() && left.get() instanceof Component text) {
+                    if (!textTooltip.text.equals(text.getVisualOrderText())) {
+                        continue;
+                    }
+
+                    var display = findAttributeDisplay(stack, text);
+                    if (display == null) {
+                        continue;
+                    }
                     var textColor = text.getStyle().getColor();
                     int color = textColor != null ? textColor.getValue() : -1;
-                    if (color != 5592405) { // default gray color
-                        component = new AttributeTooltipComponent(display, textTooltip.text, color);
+                    if (color == 5592405) { // default gray color
+                        continue;
                     }
+                    component = new AttributeTooltipComponent(display, textTooltip.text, color);
                 }
+                mutable.set(j, component);
             }
-            mutable.set(i, component);
         }
         return Collections.unmodifiableList(mutable);
     }
