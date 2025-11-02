@@ -1,4 +1,5 @@
 {
+  "attribute.name.player.sweeping_damage_ratio": "Sweeping Damage",
   "attribute.name.wayward_attributes.arrow_damage": "Arrow Damage",
   "attribute.name.wayward_attributes.arrow_velocity": "Arrow Velocity",
   "attribute.name.wayward_attributes.draw_speed": "Draw Speed",

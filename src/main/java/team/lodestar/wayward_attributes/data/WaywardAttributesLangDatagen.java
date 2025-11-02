@@ -23,5 +23,9 @@ public class WaywardAttributesLangDatagen extends LanguageProvider {
             String name = DataHelper.toTitleCase(a.getId().getPath(), "_");
             add("attribute.name." + WaywardAttributes.MODID + "." + BuiltInRegistries.ATTRIBUTE.getKey(a.get()).getPath(), name);
         });
+
+
+        add("attribute.name.player.sweeping_damage_ratio", "Sweeping Damage");
+
     }
 }

@@ -20,7 +20,6 @@ public class WaywardAttributesItemTagDatagen extends ItemTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(Provider pProvider) {
-        tag(LodestoneItemTags.RANGED_ENCHANTABLE);
         tag(ModTags.ItemTags.AFFECTED_BY_DRAW_SPEED).addTags(LodestoneItemTags.RANGED_ENCHANTABLE);
     }
 }

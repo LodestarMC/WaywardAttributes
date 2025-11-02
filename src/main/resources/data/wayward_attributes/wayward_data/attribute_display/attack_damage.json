@@ -26,6 +26,12 @@
   },
   {
     "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/staff",
+    "tags": ["malum:staff", "c:tools/staff"]
+  },
+
+  {
+    "attribute": "generic.attack_damage",
     "texture": "wayward_attributes:icon/cleaver",
     "tags": ["dungeonsdelight:cleavers", "c:tools/cleaver"]
   },
