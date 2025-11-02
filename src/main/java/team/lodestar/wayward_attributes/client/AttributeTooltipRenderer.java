@@ -39,7 +39,9 @@ public class AttributeTooltipRenderer {
                 if (display != null) {
                     var textColor = text.getStyle().getColor();
                     int color = textColor != null ? textColor.getValue() : -1;
-                    component = new AttributeTooltipComponent(display, textTooltip.text, color);
+                    if (color != 5592405) { // default gray color
+                        component = new AttributeTooltipComponent(display, textTooltip.text, color);
+                    }
                 }
             }
             mutable.set(i, component);

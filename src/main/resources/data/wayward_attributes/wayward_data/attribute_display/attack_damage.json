@@ -18,9 +18,21 @@
     "texture": "wayward_attributes:icon/trident",
     "tags": ["enchantable/trident", "c:tools/trident"]
   },
+
   {
     "attribute": "generic.attack_damage",
     "texture": "wayward_attributes:icon/scythe",
     "tags": ["malum:scythe", "c:tools/scythe"]
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/cleaver",
+    "tags": ["dungeonsdelight:cleavers", "c:tools/cleaver"]
+  },
+  {
+    "attribute": "generic.attack_damage",
+    "texture": "wayward_attributes:icon/knife",
+    "tags": ["farmersdelight:tools/knives", "c:tools/knife"],
+    "blacklist": ["dungeonsdelight:cleavers", "c:tools/cleaver"]
   }
 ]

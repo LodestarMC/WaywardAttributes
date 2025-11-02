@@ -11,12 +11,13 @@ import net.minecraft.world.item.*;
 
 import java.util.*;
 
-public record AttributeDisplay(Holder<Attribute> attribute, ResourceLocation texture, List<TagKey<Item>> tags) {
+public record AttributeDisplay(Holder<Attribute> attribute, ResourceLocation texture, List<TagKey<Item>> tags, List<TagKey<Item>> blacklist) {
 
     public static final Codec<AttributeDisplay> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Attribute.CODEC.fieldOf("attribute").forGetter(AttributeDisplay::attribute),
             ResourceLocation.CODEC.fieldOf("texture").forGetter(AttributeDisplay::texture),
-            TagKey.codec(Registries.ITEM).listOf().optionalFieldOf("tags", Collections.emptyList()).forGetter(AttributeDisplay::tags)
+            TagKey.codec(Registries.ITEM).listOf().optionalFieldOf("tags", Collections.emptyList()).forGetter(AttributeDisplay::tags),
+            TagKey.codec(Registries.ITEM).listOf().optionalFieldOf("blacklist", Collections.emptyList()).forGetter(AttributeDisplay::blacklist)
     ).apply(instance, AttributeDisplay::new));
 
 
@@ -31,6 +32,11 @@ public record AttributeDisplay(Holder<Attribute> attribute, ResourceLocation tex
                 continue;
             }
             boolean matches = data.tags.stream().anyMatch(stack::is);
+            if (!data.blacklist.isEmpty()) {
+                if (data.blacklist.stream().anyMatch(stack::is)) {
+                    matches = false;
+                }
+            }
             if (matches) {
                 return data;
             }
