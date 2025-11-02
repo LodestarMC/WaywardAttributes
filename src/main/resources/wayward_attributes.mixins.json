@@ -5,13 +5,11 @@
   "mixins": [
     "AttributesMixin",
     "AttributeUtilMixin",
-    "BowItemMixin",
     "CrossbowItemMixin",
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
     "ServerPlayerMixin",
-    "SwordItemMixin",
     "client.ClientHooksMixin"
   ],
   "client": [

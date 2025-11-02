@@ -1,5 +1,6 @@
 package team.lodestar.wayward_attributes.tweaks;
 
+import net.minecraft.core.component.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -8,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttachmentTypes;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
@@ -56,20 +58,34 @@ public class RangedAttributeTweaks {
         }
     }
 
-    public static Item.Properties addCrossbowProperties(Item.Properties properties) {
-        return addRangedItemProperties(properties, 2f, 4f, 0.75f);
+    public static void modifyComponents(ModifyDefaultComponentsEvent event) {
+        var list = event.getAllItems().toList();
+        for (Item item : list) {
+            if (item instanceof BowItem) {
+                event.modify(item, b -> addBowProperties(item, b));
+            }
+            else if (item instanceof CrossbowItem) {
+                event.modify(item, b -> addCrossbowProperties(item, b));
+            }
+        }
     }
 
-    public static Item.Properties addBowProperties(Item.Properties properties) {
-        return addRangedItemProperties(properties, 2f, 3f, 1.0f);
+    public static void addCrossbowProperties(Item item, DataComponentPatch.Builder builder) {
+        addRangedItemProperties(item, builder, 2f, 4f, 0.75f);
     }
 
-    public static Item.Properties addRangedItemProperties(Item.Properties properties, float arrowDamage, float arrowVelocity, float drawSpeed) {
-        return LodestoneItemProperties.mergeAttributes(properties,
-                ItemAttributeModifiers.builder()
-                        .add(WaywardAttributeTypes.ARROW_DAMAGE, new AttributeModifier(BASE_ARROW_DAMAGE, arrowDamage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
-                        .add(WaywardAttributeTypes.ARROW_VELOCITY, new AttributeModifier(BASE_ARROW_VELOCITY, arrowVelocity, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
-                        .add(WaywardAttributeTypes.DRAW_SPEED, new AttributeModifier(BASE_DRAW_SPEED, drawSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
-                        .build());
+    public static void addBowProperties(Item item, DataComponentPatch.Builder builder) {
+        addRangedItemProperties(item, builder, 2f, 3f, 1.0f);
+    }
+
+    public static void addRangedItemProperties(Item item, DataComponentPatch.Builder builder, float arrowDamage, float arrowVelocity, float drawSpeed) {
+        var modifiers = item.components().get(DataComponents.ATTRIBUTE_MODIFIERS);
+        if (modifiers == null) {
+            return;
+        }
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_DAMAGE, new AttributeModifier(BASE_ARROW_DAMAGE, arrowDamage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_VELOCITY, new AttributeModifier(BASE_ARROW_VELOCITY, arrowVelocity, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.DRAW_SPEED, new AttributeModifier(BASE_DRAW_SPEED, drawSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifiers);
     }
 }

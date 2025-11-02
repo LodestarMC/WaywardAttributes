@@ -1,15 +1,20 @@
 package team.lodestar.wayward_attributes.tweaks;
 
+import net.minecraft.core.component.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.common.*;
+import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
 import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
+
+import java.util.*;
 
 public class SweepAttackTweaks {
 
@@ -29,15 +34,26 @@ public class SweepAttackTweaks {
         return new AABB(newMin, newMax);
     }
 
-    public static Item.Properties addSwordSweeping(Item.Properties properties) {
-        return addSwordProperties(properties, 0.25f, 0.75f);
+    public static void modifyComponents(ModifyDefaultComponentsEvent event) {
+        var list = event.getAllItems().toList();
+        for (Item item : list) {
+            if (item.canPerformAction(item.getDefaultInstance(), ItemAbilities.SWORD_SWEEP)) {
+                event.modify(item, b -> addSwordSweeping(item, b));
+            }
+        }
     }
 
-    public static Item.Properties addSwordProperties(Item.Properties properties, float damage, float radius) {
-        return LodestoneItemProperties.mergeAttributes(properties,
-                ItemAttributeModifiers.builder()
-                        .add(Attributes.SWEEPING_DAMAGE_RATIO, new AttributeModifier(BASE_SWEEP_DAMAGE, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                        .add(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS, new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                        .build());
+    public static void addSwordSweeping(Item item, DataComponentPatch.Builder builder) {
+        addSwordProperties(item, builder, 0.25f, 0.75f);
+    }
+
+    public static void addSwordProperties(Item item, DataComponentPatch.Builder builder, float damage, float radius) {
+        var modifiers = item.components().get(DataComponents.ATTRIBUTE_MODIFIERS);
+        if (modifiers == null) {
+            return;
+        }
+        modifiers = modifiers.withModifierAdded(Attributes.SWEEPING_DAMAGE_RATIO, new AttributeModifier(BASE_SWEEP_DAMAGE, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS, new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+        builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifiers);
     }
 }
