@@ -25,8 +25,7 @@ public class ClientHooksMixin {
                                                                                         @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) List<Either<FormattedText, TooltipComponent>> elements,
                                                                                         @Local(name = "mouseX") int mouseX, @Local(name = "screenWidth") int screenWidth,
                                                                                         @Local(name = "font") Font font, @Local RenderTooltipEvent.GatherComponents event) {
-        final List<ClientTooltipComponent> result = original.call(instance);
-
+        var result = original.call(instance);
         return AttributeTooltipRenderer.addToTooltip(stack, elements, result, mouseX, screenWidth, font, event);
     }
 }
