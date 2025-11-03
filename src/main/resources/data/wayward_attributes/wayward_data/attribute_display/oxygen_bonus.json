@@ -1,6 +1,6 @@
 [
   {
-    "attribute": "player.entity_interaction_range",
-    "texture": "wayward_attributes:icon/bubble"
+    "attribute": "generic.oxygen_bonus",
+    "texture": "wayward_attributes:icon/oxygen"
   }
 ]

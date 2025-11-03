@@ -1,6 +1,6 @@
 [
   {
     "attribute": "wayward_attributes:swimming_exhaustion",
-    "texture": "wayward_attributes:icon/swim_speed"
+    "texture": "wayward_attributes:icon/hunger"
   }
 ]

@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "generic.water_movement_efficiency",
+    "texture": "wayward_attributes:icon/swim_speed"
+  }
+]

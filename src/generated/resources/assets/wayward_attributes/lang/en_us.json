@@ -1,4 +1,5 @@
 {
+  "attribute.name.generic.water_movement_efficiency": "Swim Speed",
   "attribute.name.player.sweeping_damage_ratio": "Sweep Damage",
   "attribute.name.wayward_attributes.arrow_damage": "Arrow Damage",
   "attribute.name.wayward_attributes.arrow_velocity": "Arrow Velocity",
