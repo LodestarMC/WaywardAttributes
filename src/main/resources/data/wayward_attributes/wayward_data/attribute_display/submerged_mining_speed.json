@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "player.submerged_mining_speed",
+    "texture": "wayward_attributes:icon/bubble"
+  }
+]
