@@ -101,6 +101,9 @@ public class DisplayedAttributeTweaks {
     }
 
     public static AttributeModifier scaleAttribute(ItemAttributeModifiers modifiers, AttributeModifier modified, Holder<Attribute> modifier) {
+        if (!modified.operation().equals(AttributeModifier.Operation.ADD_VALUE)) {
+            return modified;
+        }
         var player = Minecraft.getInstance().player;
         float playerBase = (float) player.getAttributeBaseValue(modifier);
         float itemBase = LodestoneEnchantmentAttributeHelper.getBaseValue(modifiers, playerBase, modifier);
