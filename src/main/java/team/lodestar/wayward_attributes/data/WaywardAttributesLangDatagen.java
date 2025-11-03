@@ -19,13 +19,15 @@ public class WaywardAttributesLangDatagen extends LanguageProvider {
     protected void addTranslations() {
         var attributes = new HashSet<>(WaywardAttributeTypes.ATTRIBUTES.getEntries());
 
+        attributes.remove(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS);
         attributes.forEach(a -> {
             String name = DataHelper.toTitleCase(a.getId().getPath(), "_");
             add("attribute.name." + WaywardAttributes.MODID + "." + BuiltInRegistries.ATTRIBUTE.getKey(a.get()).getPath(), name);
         });
 
 
-        add("attribute.name.player.sweeping_damage_ratio", "Sweeping Damage");
+        add("attribute.name.player.sweeping_damage_ratio", "Sweep Damage");
+        add("attribute.name.wayward_attributes.sweeping_damage_radius", "Sweep Radius");
 
     }
 }

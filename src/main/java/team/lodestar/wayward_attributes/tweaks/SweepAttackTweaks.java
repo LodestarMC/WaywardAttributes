@@ -21,6 +21,11 @@ public class SweepAttackTweaks {
     public static final ResourceLocation BASE_SWEEP_DAMAGE = ResourceLocation.withDefaultNamespace("base_sweeping_damage_ratio");
     public static final ResourceLocation BASE_SWEEP_RADIUS = ResourceLocation.withDefaultNamespace("base_sweeping_damage_radius");
 
+    public static float modifySweepingDamage(Player player, float damage) {
+        float ratio = (float) player.getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO);
+        return damage * ratio;
+    }
+
     public static AABB modifySweepingArea(Player player, AABB aabb) {
         float radius = (float) player.getAttributeValue(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS);
         float vertical = 0.25f * radius;
