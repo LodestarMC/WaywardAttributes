@@ -14,7 +14,7 @@ public abstract class ServerPlayerMixin {
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;isSwimming()Z"), to = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;onClimbable()Z")))
     private float waywardAttributes$modifySwimmingHungerDrain(float exhaustion) {
         Player player = (Player) (Object) this;
-        return exhaustion * HungerDrainTweaks.modifySwimmingHungerDrain(player);
+        return exhaustion * HungerTweaks.modifySwimmingHungerDrain(player);
     }
 
     @ModifyArg(method = "checkMovementStatistics",
@@ -22,6 +22,6 @@ public abstract class ServerPlayerMixin {
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;isSprinting()Z")))
     private float waywardAttributes$modifySprintingHungerDrain(float exhaustion) {
         Player player = (Player) (Object) this;
-        return exhaustion * HungerDrainTweaks.modifySprintingHungerDrain(player);
+        return exhaustion * HungerTweaks.modifySprintingHungerDrain(player);
     }
 }

@@ -27,6 +27,13 @@ public class WaywardAttributeTypes {
             LodestoneRangedAttribute.create(WaywardAttributes.path("sprinting_exhaustion"), 1.0D, 0.0D, 2048.0D)
                     .forcePercentageDisplay().setSentiment(Attribute.Sentiment.NEGATIVE).setSyncable(true));
 
+    public static final DeferredHolder<Attribute, Attribute> EATING_SPEED = registerAttribute(ATTRIBUTES,
+            LodestoneRangedAttribute.create(WaywardAttributes.path("eating_speed"), 1.0D, 0.0D, 2048.0D)
+                    .forcePercentageDisplay().setSyncable(true));
+    public static final DeferredHolder<Attribute, Attribute> DETECTION_RADIUS = registerAttribute(ATTRIBUTES,
+            LodestoneRangedAttribute.create(WaywardAttributes.path("detection_radius"), 1.0D, 0.0D, 2048.0D)
+                    .forcePercentageDisplay().setSyncable(true));
+
     public static final DeferredHolder<Attribute, Attribute> ARROW_DAMAGE = registerAttribute(ATTRIBUTES,
             LodestoneRangedAttribute.create(WaywardAttributes.path("arrow_damage"), 0.0D, 0.0D, 2048.0D)
                     .setAsBaseAttribute(RangedAttributeTweaks.BASE_ARROW_DAMAGE).setSyncable(true));

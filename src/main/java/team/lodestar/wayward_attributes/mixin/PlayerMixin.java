@@ -13,7 +13,7 @@ public class PlayerMixin {
     @ModifyArg(method = "jumpFromGround", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;causeFoodExhaustion(F)V"))
     private float waywardAttributes$modifyJumpHungerDrain(float exhaustion) {
         Player player = (Player) (Object) this;
-        return exhaustion * HungerDrainTweaks.modifyJumpingHungerDrain(player);
+        return exhaustion * HungerTweaks.modifyJumpingHungerDrain(player);
     }
 
 
