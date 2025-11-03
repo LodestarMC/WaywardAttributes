@@ -1,6 +1,6 @@
 [
   {
-    "attribute": "generic.movement_speed",
+    "attribute": "wayward_attributes:sprinting_exhaustion",
     "texture": "wayward_attributes:icon/movement_speed"
   }
 ]

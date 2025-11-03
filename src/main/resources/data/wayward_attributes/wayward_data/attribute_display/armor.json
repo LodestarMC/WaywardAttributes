@@ -2,9 +2,5 @@
   {
     "attribute": "generic.armor",
     "texture": "wayward_attributes:icon/chestplate"
-  },
-  {
-    "attribute": "generic.armor_toughness",
-    "texture": "wayward_attributes:icon/shield"
   }
 ]

@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "player.block_interaction_range",
+    "texture": "wayward_attributes:icon/reach"
+  }
+]
