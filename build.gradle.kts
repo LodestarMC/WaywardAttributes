@@ -156,6 +156,8 @@ dependencies {
     compileOnlyApi(("team.lodestar.lodestone:lodestone:${property("minecraft_version")}-${property("lodestone_version")}"))
     runtimeOnly(("team.lodestar.lodestone:lodestone:${property("minecraft_version")}-${property("lodestone_version")}"))
 
+//    runtimeOnly(("team.lodestar.enchmod:enchmod:${property("minecraft_version")}-1.0.0.9"))
+
     //Farmer's Delight
     localRuntime("curse.maven:farmers-delight-398521:6917256")
     //Dungeon's Delight

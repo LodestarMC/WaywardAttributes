@@ -88,10 +88,17 @@ public class DisplayedAttributeTweaks {
     public static void modifyAttributes(Multimap<Holder<Attribute>, AttributeModifier> map, Holder<Attribute> modified, Holder<Attribute> modifier) {
         if (map.containsKey(modified)) {
             var modifiers = LodestoneEnchantmentAttributeHelper.asAttributeModifiers(map);
-            Collection<AttributeModifier> needsRecalculation = new ArrayList<>(map.get(modified));
+            var needsRecalculation = new ArrayList<>(map.get(modified));
             map.removeAll(modified);
             for (AttributeModifier attributeModifier : needsRecalculation) {
-                map.put(modified, scaleAttribute(modifiers, attributeModifier, modifier));
+                if (attributeModifier.operation().equals(AttributeModifier.Operation.ADD_VALUE)) {
+                    map.put(modified, scaleAttribute(modifiers, attributeModifier, modifier));
+                }
+            }
+            for (AttributeModifier attributeModifier : needsRecalculation) {
+                if (!attributeModifier.operation().equals(AttributeModifier.Operation.ADD_VALUE)) {
+                    map.put(modified, attributeModifier);
+                }
             }
         }
     }
@@ -101,9 +108,6 @@ public class DisplayedAttributeTweaks {
     }
 
     public static AttributeModifier scaleAttribute(ItemAttributeModifiers modifiers, AttributeModifier modified, Holder<Attribute> modifier) {
-        if (!modified.operation().equals(AttributeModifier.Operation.ADD_VALUE)) {
-            return modified;
-        }
         var player = Minecraft.getInstance().player;
         float playerBase = (float) player.getAttributeBaseValue(modifier);
         float itemBase = LodestoneEnchantmentAttributeHelper.getBaseValue(modifiers, playerBase, modifier);
