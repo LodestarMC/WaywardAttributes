@@ -57,8 +57,8 @@ public class SweepAttackTweaks {
         if (modifiers == null) {
             return;
         }
-        modifiers = modifiers.withModifierAdded(Attributes.SWEEPING_DAMAGE_RATIO, new AttributeModifier(BASE_SWEEP_DAMAGE, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
-        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS, new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+        modifiers = modifiers.withModifierAdded(Attributes.SWEEPING_DAMAGE_RATIO.getDelegate(), new AttributeModifier(BASE_SWEEP_DAMAGE, damage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.SWEEPING_DAMAGE_RADIUS.getDelegate(), new AttributeModifier(BASE_SWEEP_RADIUS, radius, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
         builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifiers);
     }
 }

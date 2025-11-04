@@ -83,9 +83,9 @@ public class RangedAttributeTweaks {
         if (modifiers == null) {
             return;
         }
-        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_DAMAGE, new AttributeModifier(BASE_ARROW_DAMAGE, arrowDamage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
-        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_VELOCITY, new AttributeModifier(BASE_ARROW_VELOCITY, arrowVelocity, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
-        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.DRAW_SPEED, new AttributeModifier(BASE_DRAW_SPEED, drawSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_DAMAGE.getDelegate(), new AttributeModifier(BASE_ARROW_DAMAGE, arrowDamage, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.ARROW_VELOCITY.getDelegate(), new AttributeModifier(BASE_ARROW_VELOCITY, arrowVelocity, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
+        modifiers = modifiers.withModifierAdded(WaywardAttributeTypes.DRAW_SPEED.getDelegate(), new AttributeModifier(BASE_DRAW_SPEED, drawSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND);
         builder.set(DataComponents.ATTRIBUTE_MODIFIERS, modifiers);
     }
 }
