@@ -31,7 +31,7 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
     
     @Override
     public int getWidth(Font font) {
-        return font.width(this.text) + ICON_SIZE + ICON_PADDING;
+        return font.width(this.text) + ICON_SIZE + ICON_PADDING + textOffset;
     }
 
     @Override
