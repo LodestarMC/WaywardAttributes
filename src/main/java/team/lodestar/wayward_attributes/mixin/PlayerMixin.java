@@ -24,8 +24,13 @@ public class PlayerMixin {
     }
 
     @ModifyVariable(method = "attack", at = @At(value = "STORE"), name = "f7")
-    private float waywardAttributes$modifySweepingDamage(float original, @Local(name = "f") float damage) {
+    private float waywardAttributes$modifySweepingDamage(float original, @Local(name = "f3") float enchantedDamage) {
         Player player = (Player) ((Object) this);
-        return SweepAttackTweaks.modifySweepingDamage(player, damage);
+        return SweepAttackTweaks.modifySweepingDamage(player, enchantedDamage);
+    }
+
+    @ModifyVariable(method = "attack", at = @At(value = "STORE"), name = "f5")
+    private float waywardAttributes$removeObsoleteEnchantedDamageAdditionToSweepingDamage(float original, @Local(name = "f7") float sweepingDamage, @Local(name = "f2") float attackStrength) {
+        return sweepingDamage * attackStrength;
     }
 }

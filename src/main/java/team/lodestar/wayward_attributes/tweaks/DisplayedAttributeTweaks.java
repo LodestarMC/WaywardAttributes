@@ -122,8 +122,11 @@ public class DisplayedAttributeTweaks {
         return ChatFormatting.DARK_GREEN;
     }
 
-    public static ChatFormatting updateMergedAttributeComponentColor(@Nullable ChatFormatting original) {
-        return ChatFormatting.DARK_GRAY;
+    public static MutableComponent updateMergedAttributeComponentColor(Component original) {
+        if (original instanceof MutableComponent mutable) {
+            return mutable.withStyle(ChatFormatting.DARK_GRAY);
+        }
+        return MutableComponent.create(original.getContents()).withStyle(ChatFormatting.DARK_GRAY);
     }
 
     public static ResourceLocation getBaseId(IAttributeExtension attribute) {

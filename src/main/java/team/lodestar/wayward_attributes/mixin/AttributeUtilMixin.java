@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -54,19 +54,24 @@ public class AttributeUtilMixin {
     }
 
     @ModifyArg(method = "applyTextFor",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/network/chat/MutableComponent;withStyle(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;", ordinal = 1),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/network/chat/MutableComponent;append(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;", ordinal = 1),
             slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/network/chat/Component;literal(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;")))
-    private static ChatFormatting waywardAttributes$modifyMergedAttributeBaseColor(ChatFormatting format) {
-        return DisplayedAttributeTweaks.updateMergedAttributeComponentColor(format);
+    private static Component waywardAttributes$modifyMergedAttributeBaseColor(Component component) {
+        return DisplayedAttributeTweaks.updateMergedAttributeComponentColor(component);
     }
 
     @WrapOperation(method = "applyTextFor",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/Attribute;toComponent(Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;Lnet/minecraft/world/item/TooltipFlag;)Lnet/minecraft/network/chat/MutableComponent;"),
-            slice = @Slice(
-                    from = @At(value = "INVOKE", target = "Lnet/minecraft/network/chat/Component;literal(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;"),
-            to = @At(value = "INVOKE", target = "Ljava/util/function/Consumer;accept(Ljava/lang/Object;)V", ordinal = 4)))
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/Attribute;toComponent(Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;Lnet/minecraft/world/item/TooltipFlag;)Lnet/minecraft/network/chat/MutableComponent;", ordinal = 0))
     private static MutableComponent waywardAttributes$modifyMergedAttributeBaseColor(Attribute attribute, AttributeModifier modifier, TooltipFlag tooltipFlag, Operation<MutableComponent> original) {
         var result = original.call(attribute, modifier, tooltipFlag);
-        return result.withStyle(DisplayedAttributeTweaks.updateMergedAttributeComponentColor(null));
+        return DisplayedAttributeTweaks.updateMergedAttributeComponentColor(result);
+    }
+
+
+    @WrapOperation(method = "lambda$applyTextFor$3",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/Attribute;toComponent(Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;Lnet/minecraft/world/item/TooltipFlag;)Lnet/minecraft/network/chat/MutableComponent;"))
+    private static MutableComponent waywardAttributes$modifyMergedAttributeBaseColorSecond(Attribute attribute, AttributeModifier modifier, TooltipFlag tooltipFlag, Operation<MutableComponent> original) {
+        var result = original.call(attribute, modifier, tooltipFlag);
+        return DisplayedAttributeTweaks.updateMergedAttributeComponentColor(result);
     }
 }
