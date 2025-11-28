@@ -63,6 +63,9 @@ public class DisplayedAttributeTweaks {
         modifyBaseAttribute(map, stack, WaywardAttributeTypes.ARROW_DAMAGE, EnchantmentEffectComponents.DAMAGE);
         modifyAttributes(map, WaywardAttributeTypes.ARROW_DAMAGE, WaywardAttributeTypes.ARROW_VELOCITY);
 
+
+        modifyBaseAttribute(map, stack, WaywardAttributeTypes.DRAW_SPEED, EnchantmentEffectComponents.CROSSBOW_CHARGE_TIME);
+
         return map;
     }
 
