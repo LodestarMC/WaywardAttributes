@@ -2,17 +2,18 @@ package team.lodestar.wayward_attributes.client;
 
 import com.mojang.datafixers.util.*;
 import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
 import net.minecraft.client.gui.screens.inventory.tooltip.*;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.*;
 import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.contents.*;
 import net.minecraft.resources.*;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.inventory.tooltip.*;
 import net.minecraft.world.item.*;
-import net.neoforged.neoforge.client.event.*;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
 import org.jetbrains.annotations.*;
 import team.lodestar.wayward_attributes.*;
 
@@ -21,41 +22,25 @@ import java.util.*;
 public class AttributeTooltipRenderer {
 
     @ApiStatus.Internal
-    public static List<ClientTooltipComponent> addToTooltip(ItemStack stack, List<Either<FormattedText, TooltipComponent>> elements, List<ClientTooltipComponent> components) {
-        var mutable = new ArrayList<>(components);
-        for (Either<FormattedText, TooltipComponent> element : elements) {
-            for (int j = 0; j < components.size(); j++) {
-                var component = components.get(j);
-                if (!(component instanceof ClientTextTooltip textTooltip)) {
-                    continue;
-                }
-
-                var left = element.left();
-                if (left.isPresent() && left.get() instanceof Component text) {
-                    if (!textTooltip.text.equals(text.getVisualOrderText())) {
-                        continue;
-                    }
-
-                    var display = findAttributeDisplay(stack, text);
-                    if (display == null) {
-                        continue;
-                    }
-                    var textColor = text.getStyle().getColor();
-                    int color = textColor != null ? textColor.getValue() : -1;
-                    if (color == 5592405) { // default gray color
-                        continue;
-                    }
-                    int offset = 0;
-                    var string = text.getString();
-                    if (string.startsWith("+") || string.startsWith("-")) {
-                        offset = 2;
-                    }
-                    component = new AttributeTooltipComponent(display, textTooltip.text, offset, color);
-                }
-                mutable.set(j, component);
+    public static Optional<ClientTooltipComponent> modifyComponent(ItemStack stack, FormattedText text) {
+        if (text instanceof Component component) {
+            var display = findAttributeDisplay(stack, component);
+            if (display == null) {
+                return Optional.empty();
             }
+            var textColor = component.getStyle().getColor();
+            int color = textColor != null ? textColor.getValue() : -1;
+            if (color == 5592405) { // default gray color
+                return Optional.empty();
+            }
+            int offset = 0;
+            var string = component.getString();
+            if (string.startsWith("+") || string.startsWith("-")) {
+                offset = 2;
+            }
+            return Optional.of(new AttributeTooltipComponent(display, component.getVisualOrderText(), offset, color));
         }
-        return Collections.unmodifiableList(mutable);
+        return Optional.empty();
     }
 
     public static AttributeDisplay findAttributeDisplay(ItemStack stack, Component text) {

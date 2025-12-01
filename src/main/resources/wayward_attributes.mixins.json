@@ -9,9 +9,9 @@
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
-    "ServerPlayerMixin",
-    "client.ClientHooksMixin"
+    "ServerPlayerMixin"
   ],
   "client": [
+    "client.ClientHooksMixin"
   ]
 }

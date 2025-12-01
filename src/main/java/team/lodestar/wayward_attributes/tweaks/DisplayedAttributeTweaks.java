@@ -1,6 +1,7 @@
 package team.lodestar.wayward_attributes.tweaks;
 
 import com.google.common.collect.Multimap;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.neoforged.neoforge.common.extensions.IAttributeExtension;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import team.lodestar.lodestone.registry.common.tag.*;
 import team.lodestar.lodestone.systems.enchanting.*;
 import team.lodestar.wayward_attributes.*;
@@ -64,12 +66,20 @@ public class DisplayedAttributeTweaks {
         modifyAttributes(map, WaywardAttributeTypes.ARROW_DAMAGE, WaywardAttributeTypes.ARROW_VELOCITY);
 
 
-        modifyBaseAttribute(map, stack, WaywardAttributeTypes.DRAW_SPEED, EnchantmentEffectComponents.CROSSBOW_CHARGE_TIME);
+        modifyBaseAttribute(map, stack, WaywardAttributeTypes.DRAW_SPEED, EnchantmentEffectComponents.CROSSBOW_CHARGE_TIME, f -> -f);
 
         return map;
     }
 
     public static void modifyBaseAttribute(Multimap<Holder<Attribute>, AttributeModifier> map, ItemStack stack, Holder<Attribute> modified, DataComponentType<?> component) {
+        modifyBaseAttribute(map, stack, modified, component, f -> f);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void modifyBaseAttribute(Multimap<Holder<Attribute>, AttributeModifier> map, ItemStack stack, Holder<Attribute> modified, DataComponentType<?> component, Float2FloatFunction valueModifier) {
+        if (modified instanceof DeferredHolder<?, ?> deferredHolder) {
+            modified = (Holder<Attribute>) deferredHolder.getDelegate();
+        }
         if (map.containsKey(modified)) {
             AttributeModifier base = null;
             for (AttributeModifier attributeModifier : map.get(modified)) {
@@ -81,6 +91,7 @@ public class DisplayedAttributeTweaks {
             }
             if (base != null) {
                 float added = LodestoneEnchantmentValueEffectHelper.getComponentValue(stack, component, 0);
+                added = valueModifier.get(added);
                 if (added != 0) {
                     map.put(modified, growAttribute(base, added));
                 }

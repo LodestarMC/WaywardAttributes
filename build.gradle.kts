@@ -143,6 +143,22 @@ repositories {
         url = uri("https://maven.octo-studios.com/releases")
     }
 
+
+    maven { //KubeJS
+        url = uri("https://maven.latvian.dev/releases")
+        content {
+            includeGroup("dev.latvian.mods")
+            includeGroup("dev.latvian.apps")
+        }
+    }
+    maven { //KubeJS Dependencies
+        name = "jitpack"
+        url = uri("https://jitpack.io")
+        content {
+            includeGroup("io.github")
+            includeGroup("com.github.rtyley")
+        }
+    }
 }
 
 dependencies {
@@ -157,6 +173,7 @@ dependencies {
     runtimeOnly(("team.lodestar.lodestone:lodestone:${property("minecraft_version")}-${property("lodestone_version")}"))
 
 //    runtimeOnly(("team.lodestar.enchmod:enchmod:${property("minecraft_version")}-1.0.0.9"))
+//    runtimeOnly(("com.sammy.malum:malum:${property("minecraft_version")}-1.8.2.143"))
 
     //Farmer's Delight
     localRuntime("curse.maven:farmers-delight-398521:6917256")
