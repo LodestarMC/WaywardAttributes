@@ -32,7 +32,7 @@ public class WaywardAttributeTypes {
                     .forcePercentageDisplay().setSyncable(true));
     public static final DeferredHolder<Attribute, Attribute> DETECTION_RADIUS = registerAttribute(ATTRIBUTES,
             LodestoneRangedAttribute.create(WaywardAttributes.path("detection_radius"), 1.0D, 0.0D, 2048.0D)
-                    .forcePercentageDisplay().setSyncable(true));
+                    .forcePercentageDisplay().setSentiment(Attribute.Sentiment.NEGATIVE).setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> ARROW_DAMAGE = registerAttribute(ATTRIBUTES,
             LodestoneRangedAttribute.create(WaywardAttributes.path("arrow_damage"), 0.0D, 0.0D, 2048.0D)
