@@ -1,6 +1,5 @@
 package team.lodestar.wayward_attributes.client;
 
-import com.mojang.datafixers.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.screens.inventory.tooltip.*;
 import net.minecraft.core.*;
@@ -8,12 +7,8 @@ import net.minecraft.core.registries.*;
 import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.contents.*;
 import net.minecraft.resources.*;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.ai.attributes.*;
-import net.minecraft.world.inventory.tooltip.*;
 import net.minecraft.world.item.*;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.common.EventBusSubscriber;
 import org.jetbrains.annotations.*;
 import team.lodestar.wayward_attributes.*;
 

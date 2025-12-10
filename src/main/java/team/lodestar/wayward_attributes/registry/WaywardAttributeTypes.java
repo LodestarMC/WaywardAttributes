@@ -13,7 +13,6 @@ import team.lodestar.lodestone.systems.attribute.*;
 
 import static team.lodestar.lodestone.registry.common.LodestoneAttributes.*;
 
-@EventBusSubscriber()
 public class WaywardAttributeTypes {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, WaywardAttributes.MODID);
 
@@ -50,7 +49,6 @@ public class WaywardAttributeTypes {
             LodestoneRangedAttribute.create(WaywardAttributes.path("sweeping_damage_radius"), 0.0D, 0.0D, 2048.0D)
                     .setAsBaseAttribute(SweepAttackTweaks.BASE_SWEEP_RADIUS).setSyncable(true));
 
-    @SubscribeEvent
     public static void modifyEntityAttributes(EntityAttributeModificationEvent event) {
         event.getTypes().forEach(e -> {
             for (DeferredHolder<Attribute, ? extends Attribute> entry : ATTRIBUTES.getEntries()) {
