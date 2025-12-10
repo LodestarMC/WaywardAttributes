@@ -13,15 +13,6 @@ logoFile="${mod_id}.png"
 [[accessTransformers]]
 file = "META-INF/accesstransformer.cfg"
 
-[[accessTransformers]]
-file = "META-INF/blockproperties.cfg"
-
-[[accessTransformers]]
-file = "META-INF/recipebuilders.cfg"
-
-[[accessTransformers]]
-file = "META-INF/renderstates.cfg"
-
 [[mixins]]
 config="${mod_id}.mixins.json"
 
