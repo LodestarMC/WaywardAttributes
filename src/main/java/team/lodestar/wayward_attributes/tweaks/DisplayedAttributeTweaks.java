@@ -21,14 +21,12 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.neoforged.neoforge.common.extensions.IAttributeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import team.lodestar.lodestone.modules.toolkit.enchanting.*;
 import team.lodestar.lodestone.registry.common.tag.*;
-import team.lodestar.lodestone.systems.enchanting.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class DisplayedAttributeTweaks {
 

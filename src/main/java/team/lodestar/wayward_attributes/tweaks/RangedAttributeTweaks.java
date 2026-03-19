@@ -8,12 +8,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttachmentTypes;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
-import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
 
 import java.util.List;
 

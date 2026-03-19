@@ -7,12 +7,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.*;
 import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
-import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
 
 import java.util.*;
 
