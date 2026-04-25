@@ -37,7 +37,7 @@ public class AttributeDisplayDataReloadListener extends SimpleJsonResourceReload
                     var display = AttributeDisplay.DIRECT_CODEC.parse(context, jsonElement).getOrThrow(JsonParseException::new);
                     DISPLAY_DATA.add(display);
                 } catch (JsonParseException exception) {
-                    WaywardAttributes.LOGGER.info("Could not parse Attribute Display Definition: ", exception);
+                    WaywardAttributes.LOGGER.info("Could not parse Attribute Display Definition: {}", location);
                 }
             }
         }
