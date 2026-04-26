@@ -6,6 +6,7 @@
     "AttributesMixin",
     "AttributeUtilMixin",
     "CrossbowItemMixin",
+    "EndPortalBlockMixin",
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
