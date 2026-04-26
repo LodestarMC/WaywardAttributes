@@ -3,13 +3,13 @@ package team.lodestar.wayward_attributes.network;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import team.lodestar.lodestone.systems.network.OneSidedPayloadData;
 import team.lodestar.wayward_attributes.AttributeDisplay;
 import team.lodestar.wayward_attributes.AttributeDisplayDataReloadListener;
+import team.lodestar.wayward_attributes.registry.*;
 
 import java.util.List;
 
-public class SyncReloadListenerDataPayload extends OneSidedPayloadData {
+public class SyncReloadListenerDataPayload extends WaywardPayloadTypes.TemporaryOneSidedPayloadData {
 
     public static final StreamCodec<RegistryFriendlyByteBuf, SyncReloadListenerDataPayload> STREAM_CODEC =
             StreamCodec.composite(
