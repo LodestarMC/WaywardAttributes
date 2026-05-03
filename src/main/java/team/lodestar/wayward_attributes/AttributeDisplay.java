@@ -12,7 +12,7 @@ import net.minecraft.resources.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.item.*;
-import team.lodestar.lodestone.network.ExtraStreamCodecs;
+import team.lodestar.lodestone.modules.toolkit.codec.LodestoneStreamCodecs;
 
 import java.util.*;
 
@@ -29,8 +29,8 @@ public record AttributeDisplay(Holder<Attribute> attribute, ResourceLocation tex
             StreamCodec.composite(
                     Attribute.STREAM_CODEC, AttributeDisplay::attribute,
                     ResourceLocation.STREAM_CODEC, AttributeDisplay::texture,
-                    ExtraStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::tags,
-                    ExtraStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::blacklist,
+                    LodestoneStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::tags,
+                    LodestoneStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::blacklist,
                     AttributeDisplay::new
             );
 

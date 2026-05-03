@@ -13,7 +13,6 @@ import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttachmentTypes;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
-import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
 
 import java.util.List;
 
