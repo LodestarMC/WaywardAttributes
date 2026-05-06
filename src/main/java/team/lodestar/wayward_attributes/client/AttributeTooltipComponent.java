@@ -4,6 +4,7 @@ import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.gui.screens.inventory.tooltip.*;
 import net.minecraft.client.renderer.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.*;
 import net.neoforged.api.distmarker.*;
 import org.joml.*;
@@ -17,13 +18,13 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
     private static final int ICON_SIZE = 8;
     private static final int ICON_PADDING = 3;
 
-    protected final AttributeDisplay display;
+    protected final ResourceLocation icon;
     protected final FormattedCharSequence text;
     protected final int textOffset;
     protected final int color;
 
-    public AttributeTooltipComponent(AttributeDisplay display, FormattedCharSequence text, int textOffset, int color) {
-        this.display = display;
+    public AttributeTooltipComponent(ResourceLocation icon, FormattedCharSequence text, int textOffset, int color) {
+        this.icon = icon;
         this.text = text;
         this.textOffset = textOffset;
         this.color = color;
@@ -43,7 +44,7 @@ public class AttributeTooltipComponent implements ClientTooltipComponent {
     public void renderImage(Font font, int x, int y, GuiGraphics guiGraphics) {
         var builder = VFXBuilders.createScreen()
                 .setShader(GameRenderer::getPositionTexColorShader)
-                .setSprite(display.texture());
+                .setSprite(icon);
 
         builder.setPositionWithWidth(x + 5, y + 1, ICON_SIZE, ICON_SIZE).setColor(color).multiplyColor(0.25f).setAlpha(1f).blit(guiGraphics);
         builder.setPositionWithWidth(x + 4, y, ICON_SIZE, ICON_SIZE).setColor(color).setAlpha(1f).blit(guiGraphics);

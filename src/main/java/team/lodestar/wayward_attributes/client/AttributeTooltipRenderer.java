@@ -15,10 +15,18 @@ import team.lodestar.wayward_attributes.*;
 import java.util.*;
 
 public class AttributeTooltipRenderer {
+    public static final ResourceLocation DURABILITY_LOC = WaywardAttributes.path("icon/durability");
 
     @ApiStatus.Internal
     public static Optional<ClientTooltipComponent> modifyComponent(ItemStack stack, FormattedText text) {
         if (text instanceof Component component) {
+            boolean isWaywardDurability = component.getContents() instanceof TranslatableContents translatableContents && translatableContents.getKey().contains("item.wayward_durability");
+            if (isWaywardDurability) {
+                var textColor = component.getStyle().getColor();
+                int color = textColor != null ? textColor.getValue() : -1;
+                return Optional.of(new AttributeTooltipComponent(DURABILITY_LOC, component.getVisualOrderText(), 0, color));
+            }
+
             var display = findAttributeDisplay(stack, component);
             if (display == null) {
                 return Optional.empty();
@@ -33,7 +41,7 @@ public class AttributeTooltipRenderer {
             if (string.startsWith("+") || string.startsWith("-")) {
                 offset = 2;
             }
-            return Optional.of(new AttributeTooltipComponent(display, component.getVisualOrderText(), offset, color));
+            return Optional.of(new AttributeTooltipComponent(display.texture(), component.getVisualOrderText(), offset, color));
         }
         return Optional.empty();
     }
