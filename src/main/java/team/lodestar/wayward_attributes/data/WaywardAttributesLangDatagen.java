@@ -28,6 +28,6 @@ public class WaywardAttributesLangDatagen extends LanguageProvider {
 
         add("attribute.name.generic.water_movement_efficiency", "Swim Speed");
         add("attribute.name.player.sweeping_damage_ratio", "Sweep Damage");
-
+        add("item.wayward_durability", " %s / %s");
     }
 }

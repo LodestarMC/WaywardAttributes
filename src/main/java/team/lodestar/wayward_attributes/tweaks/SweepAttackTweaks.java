@@ -12,7 +12,6 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.*;
 import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
-import team.lodestar.lodestone.systems.item.LodestoneItemProperties;
 
 import java.util.*;
 

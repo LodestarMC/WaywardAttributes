@@ -12,6 +12,7 @@ import net.minecraft.resources.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.item.*;
+import team.lodestar.lodestone.modules.toolkit.codec.LodestoneStreamCodecs;
 
 import java.util.*;
 
@@ -28,14 +29,10 @@ public record AttributeDisplay(Holder<Attribute> attribute, ResourceLocation tex
             StreamCodec.composite(
                     Attribute.STREAM_CODEC, AttributeDisplay::attribute,
                     ResourceLocation.STREAM_CODEC, AttributeDisplay::texture,
-                    tempTagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::tags,
-                    tempTagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::blacklist,
+                    LodestoneStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::tags,
+                    LodestoneStreamCodecs.tagStreamCodec(Registries.ITEM).apply(ByteBufCodecs.list()), AttributeDisplay::blacklist,
                     AttributeDisplay::new
             );
-
-    public static <T> StreamCodec<ByteBuf, TagKey<T>> tempTagStreamCodec(ResourceKey<Registry<T>> registry) {
-        return ResourceLocation.STREAM_CODEC.map(o -> TagKey.create(registry, o), TagKey::location);
-    }
 
     public static final StreamCodec<RegistryFriendlyByteBuf, List<AttributeDisplay>> LIST_STREAM_CODEC =
             STREAM_CODEC.apply(ByteBufCodecs.list());

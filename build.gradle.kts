@@ -98,51 +98,41 @@ repositories {
     }
     mavenLocal()
     mavenCentral()
-    maven {
-        name = "JEI maven"
-        url = uri("https://dvs1.progwml6.com/files/maven")
-    }
-    maven {
-        name = "tterrag maven"
-        url = uri("https://maven.tterrag.com/")
-    }
-    maven {
+    maven { //Lodestone
         name = "BlameJared maven"
         url = uri("https://maven.blamejared.com/")
     }
-    maven {
-        name = "KosmX's maven"
-        url = uri("https://maven.kosmx.dev/")
+    maven { //Curios
+        name = "Curios maven"
+        url = uri("https://maven.theillusivec4.top/")
     }
-    maven {
+    maven { //JEI
+        name = "JEI maven"
+        url = uri("https://dvs1.progwml6.com/files/maven")
+    }
+
+    maven { //Curse Maven, Generic
         name = "Curse Maven"
         url = uri("https://cursemaven.com")
         content {
             includeGroup("curse.maven")
         }
     }
-    maven {
-        url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+    maven { //ParchmentMC Maven, Generic
+        name = "ParchmentMC"
+        url = uri("https://maven.parchmentmc.org")
         content {
-            includeGroup("software.bernie.geckolib")
+            includeGroup("org.parchmentmc.data")
         }
     }
-    maven {
+    maven { //Mod Maven, Generic
         name = "ModMaven"
         url = uri("https://modmaven.dev")
     }
-    maven {
-        name = "jitpack"
-        url = uri("https://jitpack.io")
-        content {
-            includeGroup("io.github")
-        }
+    maven { //Modrinth Maven, Generic
+        name = "Modrinth maven"
+        url = uri("https://api.modrinth.com/maven")
     }
-    maven {
-        name = "OctoStudios"
-        url = uri("https://maven.octo-studios.com/releases")
-    }
-
 
     maven { //KubeJS
         url = uri("https://maven.latvian.dev/releases")
@@ -158,6 +148,27 @@ repositories {
             includeGroup("io.github")
             includeGroup("com.github.rtyley")
         }
+    }
+
+    maven { //GeckoLib, Needed for Iron's Spellbooks
+        url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+        content {
+            includeGroup("software.bernie.geckolib")
+        }
+    }
+    maven { //Player Animation Lib, Needed for Iron's Spellbooks
+        name = "KosmX's maven"
+        url = uri("https://maven.kosmx.dev/")
+    }
+
+    maven { //Create
+        url = uri("https://maven.createmod.net")
+    }
+    maven { //Registrate
+        url = uri("https://mvn.devos.one/snapshots")
+    }
+    maven { // NeoForge config api port, needed by ponder
+        url = uri("https://raw.githubusercontent.com/Fuzss/modresources/main/maven")
     }
 }
 
