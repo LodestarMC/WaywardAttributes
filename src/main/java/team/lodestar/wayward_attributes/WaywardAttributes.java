@@ -3,7 +3,10 @@ package team.lodestar.wayward_attributes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.slf4j.Logger;
 import team.lodestar.wayward_attributes.registry.*;
@@ -14,8 +17,10 @@ public class WaywardAttributes
     public static final String MODID = "wayward_attributes";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public WaywardAttributes(IEventBus modEventBus) {
+    public WaywardAttributes(IEventBus modEventBus, ModContainer modContainer) {
         NeoForgeMod.enableMergedAttributeTooltips();
+
+        modContainer.registerConfig(ModConfig.Type.COMMON, EgshelsStenchConfig.SPEC);
 
         WaywardAttributeTypes.ATTRIBUTES.register(modEventBus);
         WaywardAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);

@@ -6,12 +6,13 @@
     "AttributesMixin",
     "AttributeUtilMixin",
     "CrossbowItemMixin",
-    "EndPortalBlockMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
-    "ServerPlayerMixin"
+    "ServerPlayerMixin",
+    "egshels_stench.EnderEyeItemMixin",
+    "egshels_stench.EndPortalBlockMixin"
   ],
   "client": [
     "client.ClientHooksMixin"

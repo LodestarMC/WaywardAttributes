@@ -1,4 +1,4 @@
-package team.lodestar.wayward_attributes.mixin;
+package team.lodestar.wayward_attributes.mixin.egshels_stench;
 
 import net.minecraft.core.*;
 import net.minecraft.resources.*;
@@ -10,7 +10,6 @@ import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.portal.*;
 import net.minecraft.world.phys.*;
 import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(EndPortalBlock.class)
 public class EndPortalBlockMixin {
