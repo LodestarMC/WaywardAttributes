@@ -20,8 +20,6 @@ public class WaywardAttributes
     public WaywardAttributes(IEventBus modEventBus, ModContainer modContainer) {
         NeoForgeMod.enableMergedAttributeTooltips();
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, EgshelsStenchConfig.SPEC);
-
         WaywardAttributeTypes.ATTRIBUTES.register(modEventBus);
         WaywardAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
     }

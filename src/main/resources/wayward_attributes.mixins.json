@@ -10,9 +10,7 @@
     "LivingEntityMixin",
     "PlayerMixin",
     "ProjectileWeaponItemMixin",
-    "ServerPlayerMixin",
-    "egshels_stench.EnderEyeItemMixin",
-    "egshels_stench.EndPortalBlockMixin"
+    "ServerPlayerMixin"
   ],
   "client": [
     "client.ClientHooksMixin"
