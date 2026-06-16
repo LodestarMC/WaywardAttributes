@@ -39,7 +39,6 @@ public abstract class ItemStackMixin {
     @Inject(method = "getTooltipLines", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
     public void waywardAttributes$removeVanillaDurabilityTooltip(Item.TooltipContext tooltipContext, Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
         var ogList = cir.getReturnValue();
-        var newList = ogList.stream().filter(c -> !(c.getContents() instanceof TranslatableContents contents && contents.getKey().contains("item.durability"))).toList();
-        cir.setReturnValue(new ArrayList<>(newList));
+        ogList.removeIf( c -> c.getContents() instanceof TranslatableContents contents && contents.getKey().contains("item.durability") && !contents.getKey().contains("wayward"));
     }
 }
