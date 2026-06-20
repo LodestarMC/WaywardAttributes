@@ -1,6 +1,6 @@
 [
   {
     "attribute": "generic.gravity",
-    "texture": "wayward_attributes:icon/anchor"
+    "texture": "wayward_attributes:icon/gravity"
   }
 ]

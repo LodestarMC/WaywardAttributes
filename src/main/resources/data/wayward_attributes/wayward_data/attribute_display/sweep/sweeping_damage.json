@@ -1,6 +1,6 @@
 [
   {
     "attribute": "player.sweeping_damage_ratio",
-    "texture": "wayward_attributes:icon/sweeping_damage"
+    "texture": "wayward_attributes:icon/sweep_damage"
   }
 ]
