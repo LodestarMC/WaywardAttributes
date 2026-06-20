@@ -67,7 +67,6 @@ public class AttributeUtilMixin {
         return DisplayedAttributeTweaks.updateMergedAttributeComponentColor(result);
     }
 
-
     @WrapOperation(method = "lambda$applyTextFor$3",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/Attribute;toComponent(Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;Lnet/minecraft/world/item/TooltipFlag;)Lnet/minecraft/network/chat/MutableComponent;"))
     private static MutableComponent waywardAttributes$modifyMergedAttributeBaseColorSecond(Attribute attribute, AttributeModifier modifier, TooltipFlag tooltipFlag, Operation<MutableComponent> original) {
