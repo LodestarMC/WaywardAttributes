@@ -51,7 +51,7 @@ public class MagicDamageSystem {
         if (!(source.getEntity() instanceof LivingEntity attacker)) {
             return;
         }
-        if (!damageType.is(LodestoneDamageTypeTags.CAN_TRIGGER_MAGIC_DAMAGE)) {
+        if (!damageType.is(WaywardTags.DamageTypeTags.CAN_TRIGGER_MAGIC_DAMAGE)) {
             return;
         }
         var attribute = attacker.getAttribute(WaywardAttributeTypes.MAGIC_DAMAGE);
@@ -60,7 +60,7 @@ public class MagicDamageSystem {
         }
         float damage = (float) attribute.getValue();
         if (attacker instanceof Player player) {
-            if (!damageType.is(LodestoneDamageTypeTags.IGNORES_MAGIC_ATTACK_COOLDOWN_SCALAR)) {
+            if (!damageType.is(WaywardTags.DamageTypeTags.IGNORES_MAGIC_ATTACK_COOLDOWN_SCALAR)) {
                 damage *= player.getAttackStrengthScale(0);
             }
         }

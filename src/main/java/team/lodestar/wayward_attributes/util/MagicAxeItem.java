@@ -9,7 +9,7 @@ import team.lodestar.lodestone.modules.toolkit.item.tools.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.core.registry.*;
 
-import static team.lodestar.lodestone.registry.common.LodestoneAttributes.*;
+import static team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes.BASE_MAGIC_DAMAGE;
 
 public class MagicAxeItem extends LodestoneAxeItem {
 

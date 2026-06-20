@@ -1,20 +1,22 @@
 package team.lodestar.wayward_attributes.core.registry;
 
 import net.minecraft.core.registries.*;
+import net.minecraft.resources.*;
 import net.minecraft.world.entity.ai.attributes.*;
 import net.neoforged.neoforge.event.entity.*;
 import net.neoforged.neoforge.registries.*;
+import team.lodestar.lodestone.modules.core.attribute.*;
 import team.lodestar.wayward_attributes.*;
 import team.lodestar.wayward_attributes.tweaks.RangedAttributeTweaks;
 import team.lodestar.wayward_attributes.tweaks.SweepAttackTweaks;
-import team.lodestar.lodestone.systems.attribute.*;
 
-import static team.lodestar.lodestone.registry.common.LodestoneAttributes.*;
-import static team.lodestar.lodestone.systems.attribute.LodestoneRangedAttribute.create;
+import static team.lodestar.lodestone.modules.core.attribute.LodestoneRangedAttribute.create;
 import static team.lodestar.wayward_attributes.WaywardAttributes.path;
 
 public class WaywardAttributeTypes {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, WaywardAttributes.MODID);
+
+    public static final ResourceLocation BASE_MAGIC_DAMAGE = WaywardAttributes.path("magic_damage");
 
     public static final DeferredHolder<Attribute, Attribute> MAGIC_RESISTANCE = registerAttribute(
             create(path("magic_resistance"), 1.0D, 0.0D, 2048.0D).forcePercentageDisplay().setSyncable(true));
