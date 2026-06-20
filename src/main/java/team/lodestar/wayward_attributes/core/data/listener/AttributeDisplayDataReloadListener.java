@@ -1,19 +1,18 @@
-package team.lodestar.wayward_attributes;
+package team.lodestar.wayward_attributes.core.data.listener;
 
 import com.google.gson.*;
 import com.mojang.serialization.*;
-import net.minecraft.core.*;
 import net.minecraft.resources.*;
 import net.minecraft.server.packs.resources.*;
 import net.minecraft.util.profiling.*;
-import net.minecraft.world.entity.ai.attributes.*;
 import net.neoforged.neoforge.event.*;
+import team.lodestar.wayward_attributes.*;
 
 import java.util.*;
 
 public class AttributeDisplayDataReloadListener extends SimpleJsonResourceReloadListener {
 
-    public static final ArrayList<AttributeDisplay> DISPLAY_DATA = new ArrayList<>();
+    public static final ArrayList<AttributeDisplayData> DISPLAY_DATA = new ArrayList<>();
 
     private static final Gson GSON = new GsonBuilder().create();
 
@@ -34,7 +33,7 @@ public class AttributeDisplayDataReloadListener extends SimpleJsonResourceReload
             var context = RegistryOps.create(JsonOps.INSTANCE, getRegistryLookup());
             for (JsonElement jsonElement : array) {
                 try {
-                    var display = AttributeDisplay.DIRECT_CODEC.parse(context, jsonElement).getOrThrow(JsonParseException::new);
+                    var display = AttributeDisplayData.DIRECT_CODEC.parse(context, jsonElement).getOrThrow(JsonParseException::new);
                     DISPLAY_DATA.add(display);
                 } catch (JsonParseException exception) {
                     WaywardAttributes.LOGGER.info("Could not parse Attribute Display Definition: {}", location);

@@ -1,9 +1,9 @@
-package team.lodestar.wayward_attributes.registry;
+package team.lodestar.wayward_attributes.core.registry;
 
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import team.lodestar.lodestone.registry.common.LodestoneNetworkPayloads;
 import team.lodestar.wayward_attributes.WaywardAttributes;
-import team.lodestar.wayward_attributes.network.SyncReloadListenerDataPayload;
+import team.lodestar.wayward_attributes.core.data.listener.SyncReloadListenerDataPayload;
 
 public class WaywardPayloadTypes {
 

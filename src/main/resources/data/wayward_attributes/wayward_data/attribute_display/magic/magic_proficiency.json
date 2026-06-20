@@ -1,6 +1,6 @@
 [
   {
-    "attribute": "lodestone:magic_proficiency",
+    "attribute": "wayward_attributes:magic_proficiency",
     "texture": "wayward_attributes:icon/magic"
   }
 ]

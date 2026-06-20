@@ -2,11 +2,10 @@ package team.lodestar.wayward_attributes.tweaks;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.*;
-import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.event.entity.living.*;
-import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
+import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
 
 public class HungerTweaks {
 

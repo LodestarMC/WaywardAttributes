@@ -1,11 +1,10 @@
-package team.lodestar.wayward_attributes.events;
+package team.lodestar.wayward_attributes.core.events;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.*;
@@ -15,14 +14,12 @@ import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
-import team.lodestar.wayward_attributes.registry.WaywardPayloadTypes;
+import team.lodestar.wayward_attributes.core.data.listener.*;
+import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
+import team.lodestar.wayward_attributes.core.registry.WaywardPayloadTypes;
 import team.lodestar.wayward_attributes.tweaks.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 @EventBusSubscriber(modid = WaywardAttributes.MODID)
 public class ModEvents {

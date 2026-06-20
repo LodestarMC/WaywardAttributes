@@ -1,4 +1,4 @@
-package team.lodestar.wayward_attributes;
+package team.lodestar.wayward_attributes.core.data.attachment;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

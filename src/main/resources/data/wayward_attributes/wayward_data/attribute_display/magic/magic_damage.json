@@ -1,6 +1,6 @@
 [
   {
-    "attribute": "lodestone:magic_damage",
+    "attribute": "wayward_attributes:magic_damage",
     "texture": "wayward_attributes:icon/magic"
   }
 ]

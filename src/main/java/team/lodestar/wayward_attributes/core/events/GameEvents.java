@@ -1,11 +1,12 @@
-package team.lodestar.wayward_attributes.events;
+package team.lodestar.wayward_attributes.core.events;
 
 import net.neoforged.bus.api.*;
 import net.neoforged.fml.common.*;
 import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.living.*;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.network.SyncReloadListenerDataPayload;
+import team.lodestar.wayward_attributes.core.data.listener.*;
+import team.lodestar.wayward_attributes.core.data.listener.SyncReloadListenerDataPayload;
 import team.lodestar.wayward_attributes.tweaks.*;
 
 @EventBusSubscriber(modid = WaywardAttributes.MODID)
@@ -21,6 +22,16 @@ public class GameEvents {
     @SubscribeEvent
     public static void registerListeners(AddReloadListenerEvent event) {
         AttributeDisplayDataReloadListener.register(event);
+    }
+
+    @SubscribeEvent
+    public static void onDamage(LivingDamageEvent.Pre event) {
+        MagicDamageSystem.processAttributes(event);
+    }
+
+    @SubscribeEvent
+    public static void onDamage(LivingDamageEvent.Post event) {
+        MagicDamageSystem.triggerMagicDamage(event);
     }
 
     @SubscribeEvent

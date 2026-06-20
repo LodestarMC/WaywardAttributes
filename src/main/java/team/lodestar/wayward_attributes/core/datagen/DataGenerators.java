@@ -1,4 +1,4 @@
-package team.lodestar.wayward_attributes.data;
+package team.lodestar.wayward_attributes.core.datagen;
 
 import net.minecraft.core.*;
 import net.minecraft.data.*;
@@ -27,10 +27,12 @@ public class DataGenerators {
 
         var blockTagDatagen = new WaywardAttributesBlockTagDatagen(output, provider, helper);
         var itemTagDatagen = new WaywardAttributesItemTagDatagen(output, provider, blockTagDatagen.contentsGetter(), helper);
+        var damageTypeDatagen = new WaywardAttributesDamageTypeDatagen(output, provider, helper);
 
         generator.addProvider(includeClient, langDatagen);
 
         generator.addProvider(includeServer, blockTagDatagen);
         generator.addProvider(includeServer, itemTagDatagen);
+        generator.addProvider(includeServer, damageTypeDatagen);
     }
 }

@@ -1,4 +1,4 @@
-package team.lodestar.wayward_attributes.data;
+package team.lodestar.wayward_attributes.core.datagen;
 
 import net.minecraft.core.HolderLookup.*;
 import net.minecraft.data.*;
@@ -20,6 +20,6 @@ public class WaywardAttributesItemTagDatagen extends ItemTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(Provider pProvider) {
-        tag(ModTags.ItemTags.AFFECTED_BY_DRAW_SPEED).addTags(LodestoneItemTags.RANGED_ENCHANTABLE);
+        tag(WaywardTags.ItemTags.AFFECTED_BY_DRAW_SPEED).addTags(LodestoneItemTags.RANGED_ENCHANTABLE);
     }
 }

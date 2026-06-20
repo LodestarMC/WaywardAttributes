@@ -1,4 +1,4 @@
-package team.lodestar.wayward_attributes.data;
+package team.lodestar.wayward_attributes.core.datagen;
 
 import net.minecraft.core.*;
 import net.minecraft.data.*;

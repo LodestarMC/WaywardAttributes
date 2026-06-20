@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.item.*;
 import org.jetbrains.annotations.*;
 import team.lodestar.wayward_attributes.*;
+import team.lodestar.wayward_attributes.core.data.listener.*;
 
 import java.util.*;
 
@@ -46,7 +47,7 @@ public class AttributeTooltipRenderer {
         return Optional.empty();
     }
 
-    public static AttributeDisplay findAttributeDisplay(ItemStack stack, Component text) {
+    public static AttributeDisplayData findAttributeDisplay(ItemStack stack, Component text) {
         var display = findAttributeDisplay(stack, text.getContents());
         if (display.isPresent()) {
             return display.get();
@@ -61,7 +62,7 @@ public class AttributeTooltipRenderer {
         return null;
     }
 
-    public static Optional<AttributeDisplay> findAttributeDisplay(ItemStack stack, ComponentContents contents) {
+    public static Optional<AttributeDisplayData> findAttributeDisplay(ItemStack stack, ComponentContents contents) {
         if (!(contents instanceof TranslatableContents translatableContents)) {
             return Optional.empty();
         }
@@ -86,7 +87,7 @@ public class AttributeTooltipRenderer {
                 attributeKey = attributeKey.replaceFirst("\\.", ":");
                 attribute = getAttribute(ResourceLocation.tryParse(attributeKey));
             }
-            return Optional.ofNullable(AttributeDisplay.findMatching(stack, attribute));
+            return Optional.ofNullable(AttributeDisplayData.findMatching(stack, attribute));
         }
         return Optional.empty();
     }

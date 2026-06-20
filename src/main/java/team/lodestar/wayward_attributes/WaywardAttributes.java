@@ -4,12 +4,10 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.slf4j.Logger;
-import team.lodestar.wayward_attributes.registry.*;
+import team.lodestar.wayward_attributes.core.registry.*;
 
 @Mod(WaywardAttributes.MODID)
 public class WaywardAttributes

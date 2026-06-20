@@ -1,11 +1,9 @@
-package team.lodestar.wayward_attributes.network;
+package team.lodestar.wayward_attributes.core.data.listener;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import team.lodestar.lodestone.systems.network.OneSidedPayloadData;
-import team.lodestar.wayward_attributes.AttributeDisplay;
-import team.lodestar.wayward_attributes.AttributeDisplayDataReloadListener;
 
 import java.util.List;
 
@@ -13,18 +11,18 @@ public class SyncReloadListenerDataPayload extends OneSidedPayloadData {
 
     public static final StreamCodec<RegistryFriendlyByteBuf, SyncReloadListenerDataPayload> STREAM_CODEC =
             StreamCodec.composite(
-                    AttributeDisplay.LIST_STREAM_CODEC, p -> p.attributeDisplays,
+                    AttributeDisplayData.LIST_STREAM_CODEC, p -> p.attributeDisplayData,
                     SyncReloadListenerDataPayload::new
             );
 
-    private final List<AttributeDisplay> attributeDisplays;
+    private final List<AttributeDisplayData> attributeDisplayData;
 
     public SyncReloadListenerDataPayload() {
         this(AttributeDisplayDataReloadListener.DISPLAY_DATA);
     }
 
-    public SyncReloadListenerDataPayload(List<AttributeDisplay> attributeDisplays) {
-        this.attributeDisplays = attributeDisplays;
+    public SyncReloadListenerDataPayload(List<AttributeDisplayData> attributeDisplayData) {
+        this.attributeDisplayData = attributeDisplayData;
     }
 
     public static SyncReloadListenerDataPayload deserialize(RegistryFriendlyByteBuf buf) {
@@ -40,6 +38,6 @@ public class SyncReloadListenerDataPayload extends OneSidedPayloadData {
     public void handle(IPayloadContext context) {
         var clientDisplays = AttributeDisplayDataReloadListener.DISPLAY_DATA;
         clientDisplays.clear();
-        clientDisplays.addAll(attributeDisplays);
+        clientDisplays.addAll(attributeDisplayData);
     }
 }

@@ -1,12 +1,7 @@
 package team.lodestar.wayward_attributes.tweaks;
 
-import net.minecraft.core.*;
-import net.minecraft.core.component.*;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.*;
-import net.minecraft.world.entity.player.*;
 import net.neoforged.neoforge.event.entity.living.*;
-import team.lodestar.wayward_attributes.registry.*;
+import team.lodestar.wayward_attributes.core.registry.*;
 
 public class DetectionTweaks {
 

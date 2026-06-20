@@ -1,11 +1,11 @@
-package team.lodestar.wayward_attributes.data;
+package team.lodestar.wayward_attributes.core.datagen;
 
 import net.minecraft.core.registries.*;
 import net.minecraft.data.*;
 import net.neoforged.neoforge.common.data.*;
 import team.lodestar.lodestone.helpers.*;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.registry.*;
+import team.lodestar.wayward_attributes.core.registry.*;
 
 import java.util.*;
 
