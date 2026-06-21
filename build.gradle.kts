@@ -186,6 +186,8 @@ dependencies {
 //    runtimeOnly(("team.lodestar.enchmod:enchmod:${property("minecraft_version")}-1.0.0.9"))
 //    runtimeOnly(("com.sammy.malum:malum:${property("minecraft_version")}-1.8.2.143"))
 
+    localRuntime("curse.maven:caverns-and-chasms-438005:8155745")
+    localRuntime("curse.maven:blueprint-382216:8048607")
     //Farmer's Delight
     localRuntime("curse.maven:farmers-delight-398521:6917256")
     //Dungeon's Delight

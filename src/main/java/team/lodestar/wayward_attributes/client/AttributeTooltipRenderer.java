@@ -77,28 +77,15 @@ public class AttributeTooltipRenderer {
             if (!(component.getContents() instanceof TranslatableContents argContents)) {
                 continue;
             }
-            var attributeName = argContents.getKey();
-            if (!attributeName.contains("attribute.name.")) {
+            var langKey = argContents.getKey();
+            if (!langKey.contains("attribute.")) {
                 continue;
             }
-            var attributeKey = attributeName.replace("attribute.name.", "");
-            var attribute = getAttribute(ResourceLocation.tryParse(attributeKey));
-            if (attribute == null) { //
-                attributeKey = attributeKey.replaceFirst("\\.", ":");
-                attribute = getAttribute(ResourceLocation.tryParse(attributeKey));
+            if (!langKey.contains("name.")) {
+                continue;
             }
-            return Optional.ofNullable(AttributeDisplayData.findMatching(stack, attribute));
+            return Optional.ofNullable(AttributeDisplayData.findMatching(stack, langKey));
         }
         return Optional.empty();
-    }
-
-    public static Holder<Attribute> getAttribute(@Nullable ResourceLocation id) {
-        if (id == null) {
-            return null;
-        }
-        var registryAccess = Minecraft.getInstance().level.registryAccess();
-        var registry = registryAccess.registryOrThrow(Registries.ATTRIBUTE);
-        var holder = registry.getHolder(ResourceKey.create(Registries.ATTRIBUTE, id));
-        return holder.orElse(null);
     }
 }

@@ -1,6 +1,6 @@
 [
   {
     "attribute": "caverns_and_chasms:slowness_infliction",
-    "texture": "wayward_attributes:icon/durability"
+    "texture": "wayward_attributes:icon/sneak"
   }
 ]
