@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "minecraft:generic.attack_knockback",
+    "texture": "wayward_attributes:icon/knockback"
+  }
+]

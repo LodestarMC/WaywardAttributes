@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "sable:player.sub_level_punch_cooldown",
+    "texture": "wayward_attributes:icon/duration"
+  }
+]
