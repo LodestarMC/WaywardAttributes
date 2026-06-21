@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.item.*;
 import org.jetbrains.annotations.*;
 import team.lodestar.wayward_attributes.*;
+import team.lodestar.wayward_attributes.core.data.listener.*;
 
 import java.util.*;
 
@@ -46,7 +47,7 @@ public class AttributeTooltipRenderer {
         return Optional.empty();
     }
 
-    public static AttributeDisplay findAttributeDisplay(ItemStack stack, Component text) {
+    public static AttributeDisplayData findAttributeDisplay(ItemStack stack, Component text) {
         var display = findAttributeDisplay(stack, text.getContents());
         if (display.isPresent()) {
             return display.get();
@@ -61,7 +62,7 @@ public class AttributeTooltipRenderer {
         return null;
     }
 
-    public static Optional<AttributeDisplay> findAttributeDisplay(ItemStack stack, ComponentContents contents) {
+    public static Optional<AttributeDisplayData> findAttributeDisplay(ItemStack stack, ComponentContents contents) {
         if (!(contents instanceof TranslatableContents translatableContents)) {
             return Optional.empty();
         }
@@ -76,28 +77,15 @@ public class AttributeTooltipRenderer {
             if (!(component.getContents() instanceof TranslatableContents argContents)) {
                 continue;
             }
-            var attributeName = argContents.getKey();
-            if (!attributeName.contains("attribute.name.")) {
+            var langKey = argContents.getKey();
+            if (!langKey.contains("attribute.")) {
                 continue;
             }
-            var attributeKey = attributeName.replace("attribute.name.", "");
-            var attribute = getAttribute(ResourceLocation.tryParse(attributeKey));
-            if (attribute == null) { //
-                attributeKey = attributeKey.replaceFirst("\\.", ":");
-                attribute = getAttribute(ResourceLocation.tryParse(attributeKey));
+            if (!langKey.contains("name.")) {
+                continue;
             }
-            return Optional.ofNullable(AttributeDisplay.findMatching(stack, attribute));
+            return Optional.ofNullable(AttributeDisplayData.findMatching(stack, langKey));
         }
         return Optional.empty();
-    }
-
-    public static Holder<Attribute> getAttribute(@Nullable ResourceLocation id) {
-        if (id == null) {
-            return null;
-        }
-        var registryAccess = Minecraft.getInstance().level.registryAccess();
-        var registry = registryAccess.registryOrThrow(Registries.ATTRIBUTE);
-        var holder = registry.getHolder(ResourceKey.create(Registries.ATTRIBUTE, id));
-        return holder.orElse(null);
     }
 }

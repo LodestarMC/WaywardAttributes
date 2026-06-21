@@ -186,16 +186,18 @@ dependencies {
 //    runtimeOnly(("team.lodestar.enchmod:enchmod:${property("minecraft_version")}-1.0.0.9"))
 //    runtimeOnly(("com.sammy.malum:malum:${property("minecraft_version")}-1.8.2.143"))
 
+//    localRuntime("curse.maven:caverns-and-chasms-438005:8155745")
+//    localRuntime("curse.maven:blueprint-382216:8048607")
     //Farmer's Delight
-    localRuntime("curse.maven:farmers-delight-398521:6917256")
+//    localRuntime("curse.maven:farmers-delight-398521:6917256")
     //Dungeon's Delight
-    localRuntime("curse.maven:runiclib-880879:7054118")
-    localRuntime("curse.maven:dungeons-delight-1258923:7083775")
+//    localRuntime("curse.maven:runiclib-880879:7054118")
+//    localRuntime("curse.maven:dungeons-delight-1258923:7083775")
 
     //Enchantment Descriptions
-    localRuntime("curse.maven:prickle-1023259:5836410")
-    localRuntime("curse.maven:bookshelf-228525:6438571")
-    localRuntime("curse.maven:enchantment-descriptions-250419:6348560")
+//    localRuntime("curse.maven:prickle-1023259:5836410")
+//    localRuntime("curse.maven:bookshelf-228525:6438571")
+//    localRuntime("curse.maven:enchantment-descriptions-250419:6348560")
 }
 
 val generateModMetadata by tasks.registering(ProcessResources::class) {

@@ -1,0 +1,6 @@
+[
+  {
+    "attribute": "player.sneaking_speed",
+    "texture": "wayward_attributes:icon/sneak"
+  }
+]

@@ -25,11 +25,9 @@ import team.lodestar.lodestone.modules.toolkit.enchanting.LodestoneEnchantmentAt
 import team.lodestar.lodestone.modules.toolkit.enchanting.LodestoneEnchantmentValueEffectHelper;
 import team.lodestar.lodestone.registry.common.tag.*;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
+import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class DisplayedAttributeTweaks {
 
@@ -37,7 +35,7 @@ public class DisplayedAttributeTweaks {
 
     public static Multimap<Holder<Attribute>, AttributeModifier> getModifiersForTooltip(Multimap<Holder<Attribute>, AttributeModifier> original, ItemStack stack, EquipmentSlotGroup slot) {
         var group = EquipmentSlotGroup.MAINHAND;
-        if (stack.is(ModTags.ItemTags.AFFECTED_BY_DRAW_SPEED)) {
+        if (stack.is(WaywardTags.ItemTags.AFFECTED_BY_DRAW_SPEED)) {
             group = EquipmentSlotGroup.HAND;
         }
 

@@ -8,11 +8,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.*;
-import team.lodestar.wayward_attributes.registry.WaywardAttachmentTypes;
-import team.lodestar.wayward_attributes.registry.WaywardAttributeTypes;
+import team.lodestar.wayward_attributes.core.registry.WaywardAttachmentTypes;
+import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class RangedAttributeTweaks {
     public static final ResourceLocation BASE_DRAW_SPEED = ResourceLocation.withDefaultNamespace("base_draw_speed");
 
     public static boolean modifyDrawSpeed(LivingEntity target, ItemStack stack) {
-        if (stack.is(ModTags.ItemTags.AFFECTED_BY_DRAW_SPEED)) {
+        if (stack.is(WaywardTags.ItemTags.AFFECTED_BY_DRAW_SPEED)) {
             float drawSpeed = (float) target.getAttributeValue(WaywardAttributeTypes.DRAW_SPEED);
             var data = target.getData(WaywardAttachmentTypes.DRAW_SPEED_DATA);
             int raise = data.increment(drawSpeed);

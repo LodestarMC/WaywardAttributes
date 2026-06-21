@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(ItemStack.class)
@@ -38,7 +39,6 @@ public abstract class ItemStackMixin {
     @Inject(method = "getTooltipLines", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
     public void waywardAttributes$removeVanillaDurabilityTooltip(Item.TooltipContext tooltipContext, Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
         var ogList = cir.getReturnValue();
-        var newList = ogList.stream().filter(c -> !(c.getContents() instanceof TranslatableContents contents && contents.getKey().contains("item.durability"))).toList();
-        cir.setReturnValue(newList);
+        ogList.removeIf( c -> c.getContents() instanceof TranslatableContents contents && contents.getKey().contains("item.durability") && !contents.getKey().contains("wayward"));
     }
 }

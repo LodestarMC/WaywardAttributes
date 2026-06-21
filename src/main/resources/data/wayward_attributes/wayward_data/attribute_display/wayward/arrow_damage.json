@@ -1,0 +1,12 @@
+[
+  {
+    "attribute": "wayward_attributes:arrow_damage",
+    "texture": "wayward_attributes:icon/item/bow",
+    "tags": ["c:tools/bow"]
+  },
+  {
+    "attribute": "wayward_attributes:arrow_damage",
+    "texture": "wayward_attributes:icon/item/crossbow",
+    "tags": ["c:tools/crossbow"]
+  }
+]
