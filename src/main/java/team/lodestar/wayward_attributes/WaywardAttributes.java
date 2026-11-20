@@ -7,6 +7,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.slf4j.Logger;
+import team.lodestar.wayward_attributes.config.WaywardAttributesCommonConfig;
 import team.lodestar.wayward_attributes.core.registry.*;
 
 @Mod(WaywardAttributes.MODID)
@@ -17,6 +18,7 @@ public class WaywardAttributes
 
     public WaywardAttributes(IEventBus modEventBus, ModContainer modContainer) {
         NeoForgeMod.enableMergedAttributeTooltips();
+        WaywardAttributesCommonConfig.HOLDER.register(modContainer);
 
         WaywardAttributeTypes.ATTRIBUTES.register(modEventBus);
         WaywardAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);

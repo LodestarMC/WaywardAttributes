@@ -10,6 +10,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.event.*;
 import team.lodestar.wayward_attributes.*;
+import team.lodestar.wayward_attributes.config.WaywardAttributesCommonConfig;
 import team.lodestar.wayward_attributes.core.registry.WaywardAttachmentTypes;
 import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
 
@@ -69,11 +70,27 @@ public class RangedAttributeTweaks {
     }
 
     public static void addCrossbowProperties(Item item, DataComponentPatch.Builder builder) {
-        addRangedItemProperties(item, builder, 2f, 4f, 0.75f);
+        var config = WaywardAttributesCommonConfig.CONFIG;
+
+        float arrowDamage = config.baseArrowDamage.getValue().floatValue();
+        float arrowVelocity = config.crossbowArrowVelocity.getValue().floatValue();
+        float drawSpeed = config.crossbowDrawSpeed.getValue().floatValue();
+        if (config.bakedArrowCritDamage.getValue()) {
+            arrowDamage *= 1.5f;
+        }
+        addRangedItemProperties(item, builder, arrowDamage, arrowVelocity, drawSpeed);
     }
 
     public static void addBowProperties(Item item, DataComponentPatch.Builder builder) {
-        addRangedItemProperties(item, builder, 2f, 3f, 1.0f);
+        var config = WaywardAttributesCommonConfig.CONFIG;
+
+        float arrowDamage = config.baseArrowDamage.getValue().floatValue();
+        float arrowVelocity = config.bowArrowVelocity.getValue().floatValue();
+        float drawSpeed = config.bowDrawSpeed.getValue().floatValue();
+        if (config.bakedArrowCritDamage.getValue()) {
+            arrowDamage *= 1.5f;
+        }
+        addRangedItemProperties(item, builder, arrowDamage, arrowVelocity, drawSpeed);
     }
 
     public static void addRangedItemProperties(Item item, DataComponentPatch.Builder builder, float arrowDamage, float arrowVelocity, float drawSpeed) {
