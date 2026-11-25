@@ -12,8 +12,6 @@ public class DrawSpeedData {
             Codec.FLOAT.fieldOf("charges").forGetter(c -> c.partialUseTicks)
     ).apply(obj, DrawSpeedData::new));
 
-    public static final StreamCodec<ByteBuf, DrawSpeedData> STREAM_CODEC = ByteBufCodecs.fromCodec(CODEC);
-
     private float partialUseTicks;
 
     public DrawSpeedData() {

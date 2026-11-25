@@ -11,15 +11,13 @@ import net.minecraft.world.item.component.*;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.*;
 import net.neoforged.neoforge.event.*;
+import team.lodestar.wayward_attributes.config.WaywardAttributesCommonConfig;
 import team.lodestar.wayward_attributes.core.registry.WaywardAttributeTypes;
 
 public class SweepAttackTweaks {
 
     public static final ResourceLocation BASE_SWEEP_DAMAGE = ResourceLocation.withDefaultNamespace("base_sweeping_damage_ratio");
     public static final ResourceLocation BASE_SWEEP_RADIUS = ResourceLocation.withDefaultNamespace("base_sweeping_damage_radius");
-
-    public static final float SWORD_SWEEPING_DAMAGE_RATIO = 0.25f;
-    public static final float SWORD_SWEEPING_DAMAGE_RADIUS = 0.75f;
 
     public static float modifySweepingDamage(Player player, float damage) {
         float ratio = (float) player.getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO);
@@ -49,7 +47,10 @@ public class SweepAttackTweaks {
     }
 
     public static void addSwordSweeping(Item item, DataComponentPatch.Builder builder) {
-        addSwordProperties(item, builder, SWORD_SWEEPING_DAMAGE_RATIO, SWORD_SWEEPING_DAMAGE_RADIUS);
+        var config = WaywardAttributesCommonConfig.CONFIG;
+        float damageRatio = config.swordSweepDamageRatio.getValue().floatValue();
+        float damageRadius = config.swordSweepRadius.getValue().floatValue();
+        addSwordProperties(item, builder, damageRatio, damageRadius);
     }
 
     @SuppressWarnings("DataFlowIssue")
